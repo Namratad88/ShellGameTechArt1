@@ -4,40 +4,48 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    public GameObject Obejct;
+    public Transform Target;
+    protected GameObject Chest;
+    protected bool ifColliding;
+
     //The object we are colliding with
     protected GameObject collidingObject = null;
 
-    // Update is called once per frame
+    void Start()
+    {
+        ifColliding = false;
+        Obejct.transform.parent = Target.transform;
+        Obejct.transform.localPosition = Vector3.zero; //Rotation of the transform relative to the parent transform.
+        Obejct.transform.localRotation = Quaternion.identity;//Position of the transform relative to the parent transform.
+    }
     void Update()
     {
-        //Check for inputs to pick up the object
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("PlaceObject") && ifColliding == true)//Press "P" to place the object to the current collidingChest.
         {
-            if (collidingObject != null)
-            {
-                if (collidingObject.GetComponent<TreasureChest>() != null)
-                {
-                    collidingObject.GetComponent<TreasureChest>().OpenBox();
-                }
-            }
+            Obejct.transform.parent = null;
+            Obejct.transform.parent = collidingObject.transform;
+            Obejct.transform.localPosition = new Vector3(0, 5, 0);//Adjusting Postion inside the Chest.
+            Obejct.transform.localRotation = Quaternion.identity;
         }
     }
-
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<TreasureChest>())
+        Debug.Log("Start Colliding");
+        if (other.gameObject.GetComponent<TreasureChestInteraction>())
         {
-            Debug.Log("On t enter!");
             collidingObject = other.gameObject;
+            ifColliding = true;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.GetComponent<TreasureChest>())
+        Debug.Log("Stop Colliding");
+        if (other.gameObject.GetComponent<TreasureChestInteraction>())
         {
-            Debug.Log("On t exit!");
             collidingObject = null;
+            ifColliding = false;
         }
     }
 
