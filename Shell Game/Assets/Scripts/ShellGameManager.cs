@@ -11,7 +11,7 @@ public class ShellGameManager : MonoBehaviour
     public GameObject TreasureChest_02;
 
     //The number of treasure chests that spawn
-    public int NumTreasureChests = 3;
+    public int NumTreasureChests = 1;
     //The distance between each chest
     public float TreasureChestSpacing = 5.0f;
 
@@ -75,7 +75,9 @@ public class ShellGameManager : MonoBehaviour
                 treasureChests.Add(go);
             }
         }
-        SetTreasureChestPositions();
+        //SetTreasureChestPositions();
+        treasureChests[0].SetActive(true);
+
     }
     void SetTreasureChestPositions()
     {
