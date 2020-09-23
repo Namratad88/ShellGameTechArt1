@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShellGameManager : MonoBehaviour
 {
     public GameObject Text01;
     protected Animator TextAnimtor;
+    private Animator ShuffleAnimator;
     //The treasure chest prefab object
     public GameObject TreasureChest_01;
     public GameObject TreasureChest_02;
@@ -40,6 +42,11 @@ public class ShellGameManager : MonoBehaviour
     protected bool haveSpawn;
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+
+    }
     void Start()
     {
         chooseChest = 0;
@@ -49,7 +56,8 @@ public class ShellGameManager : MonoBehaviour
         TreasureChest_02.SetActive(false);
 
         treasureChests = new List<GameObject>();
-        //StartCoroutine(WaitToStartBeginShuffle());
+        //StartCoroutine(WaitToStartBeginShuffle()); 
+        
     }
 
     //IEnumerator WaitToStartBeginShuffle()
@@ -77,6 +85,8 @@ public class ShellGameManager : MonoBehaviour
         }
         //SetTreasureChestPositions();
         treasureChests[0].SetActive(true);
+        ShuffleAnimator = treasureChests[0].GetComponent<Animator>();
+
 
     }
     void SetTreasureChestPositions()
@@ -101,11 +111,20 @@ public class ShellGameManager : MonoBehaviour
             Debug.Log("You Choosed the Chest02");
             chooseChest = 2;
         }
+
         if(chooseChest != 0 && haveSpawn == false)
         {
             SpawnTreasureChests();
             haveSpawn = true;
             Text01.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            ShuffleAnimator.SetTrigger("position11");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("ShellGameScene");
         }
         #region If we are shuffling objects, change their positions
         //if (bShuffling)
