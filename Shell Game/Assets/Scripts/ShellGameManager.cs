@@ -120,7 +120,18 @@ public class ShellGameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
-            ShuffleAnimator.SetTrigger("position11");
+            int position = Random.Range(0, 1 + 1);
+
+            Debug.Log("pos " + position);
+            switch(position)
+            {
+                case (0):
+                    ShuffleAnimator.SetTrigger("position11");
+                    break;
+                case (1):
+                    ShuffleAnimator.SetTrigger("position12");
+                    break;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
