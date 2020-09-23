@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TreasureChestInteraction : MonoBehaviour
 {
+    public Vector3 InsertItemPosition = new Vector3();
+
     protected Animator animatorComponent;
     protected ShellGameManager shellGameManagerRef = null;
 

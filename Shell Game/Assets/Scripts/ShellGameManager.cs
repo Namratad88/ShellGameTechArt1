@@ -38,7 +38,7 @@ public class ShellGameManager : MonoBehaviour
     protected Vector3 go2Start;
     protected Vector3 go2End;
 
-    protected int chooseChest;//The kind of the Chest
+    public int chooseChest;//The kind of the Chest
     protected bool haveSpawn;
 
     // Start is called before the first frame update

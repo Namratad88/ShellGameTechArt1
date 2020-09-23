@@ -4060,6 +4060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2d8a9918075624bb77a061513e1df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InsertItemPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &598814505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6051,6 +6052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2d8a9918075624bb77a061513e1df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InsertItemPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &896071286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13266,6 +13268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2d8a9918075624bb77a061513e1df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InsertItemPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1749483526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14442,6 +14445,7 @@ MonoBehaviour:
   TreasureChest_02: {fileID: 349596687}
   NumTreasureChests: 1
   TreasureChestSpacing: 2
+  chooseChest: 0
 --- !u!4 &1918619973
 Transform:
   m_ObjectHideFlags: 0

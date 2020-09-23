@@ -25,7 +25,16 @@ public class PlayerCharacter : MonoBehaviour
         {
             Obejct.transform.parent = null;
             Obejct.transform.parent = collidingObject.transform;
-            Obejct.transform.localPosition = new Vector3(0, 5, 0);//Adjusting Postion inside the Chest.
+            
+            if(collidingObject.GetComponent<TreasureChestInteraction>())
+            {
+                Obejct.transform.localPosition = collidingObject.GetComponent<TreasureChestInteraction>().InsertItemPosition;
+            }
+            else
+            {
+                Obejct.transform.localPosition = new Vector3(0, 5, 0);//Adjusting Postion inside the Chest.
+            }
+
             Obejct.transform.localRotation = Quaternion.identity;
         }
     }
